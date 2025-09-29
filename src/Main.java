@@ -39,6 +39,7 @@ public class Main {
 
             // Underscores
             ArrayList<Character> wordState = new ArrayList<>();
+            ArrayList<Character> incorrectGuesses = new ArrayList<>();
             int wrongGuesses = 0;
 
             // Adds appropriate number of underscores
@@ -53,6 +54,7 @@ public class Main {
             while(wrongGuesses < 6){
 
                 System.out.println(getHangmanArt(wrongGuesses));
+                System.out.println("Incorrect Guesses: " + incorrectGuesses);
 
                 System.out.print("Word: ");
                 for(char c : wordState){
@@ -62,6 +64,7 @@ public class Main {
 
                 System.out.print("Guess a letter: ");
                 char guess = scanner.next().toUpperCase().charAt(0);
+                incorrectGuesses.add(guess);
 
                 if(word.indexOf(guess) >= 0){
                     System.out.println("Correct guess!\n");
