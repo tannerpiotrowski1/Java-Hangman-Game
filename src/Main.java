@@ -54,8 +54,9 @@ public class Main {
             while(wrongGuesses < 6){
 
                 System.out.println(getHangmanArt(wrongGuesses));
-                System.out.println("Incorrect Guesses: " + incorrectGuesses);
+                System.out.println("Incorrect Guesses: " + wrongGuesses + " " + incorrectGuesses);
 
+                // Display _ or correct character
                 System.out.print("Word: ");
                 for(char c : wordState){
                     System.out.print(c + " ");
@@ -65,15 +66,18 @@ public class Main {
                 System.out.print("Guess a letter: ");
                 char guess = scanner.next().toUpperCase().charAt(0);
 
+                // Checks if guess is at a certain index of word
                 if(word.indexOf(guess) >= 0){
                     System.out.println("Correct guess!\n");
 
                     for(int i = 0; i < word.length(); i++){
+                        // Replaces _ with correct guess character
                         if(word.charAt(i) == guess){
                             wordState.set(i, guess);
                         }
                     }
 
+                    // Win condition -> all _ are replaced
                     if(!wordState.contains('_')){
                         System.out.print(getHangmanArt(wrongGuesses));
                         System.out.println("YOU WIN!");
@@ -87,6 +91,7 @@ public class Main {
                 }
             }
 
+            // Lose condition
             if(wrongGuesses >= 6){
                 System.out.print(getHangmanArt(wrongGuesses));
                 System.out.println("GAME OVER!");
