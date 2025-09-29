@@ -64,7 +64,6 @@ public class Main {
 
                 System.out.print("Guess a letter: ");
                 char guess = scanner.next().toUpperCase().charAt(0);
-                incorrectGuesses.add(guess);
 
                 if(word.indexOf(guess) >= 0){
                     System.out.println("Correct guess!\n");
@@ -83,6 +82,7 @@ public class Main {
                     }
                 }else{
                     wrongGuesses++;
+                    incorrectGuesses.add(guess);
                     System.out.println("Wrong guess!");
                 }
             }
